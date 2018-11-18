@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class TasksController extends Controller
 {
+    
+    public function __construct()
+    {
+        return $this->middleware('auth');
+    }
+    
     /**
      * Display list of completed tasks
      *
@@ -65,6 +71,7 @@ class TasksController extends Controller
      */
     public function edit(Task $task)
     {
+        $this->authorize('update', $task);
         return view('tasks.edit', ['task' => $task]);
     }
 

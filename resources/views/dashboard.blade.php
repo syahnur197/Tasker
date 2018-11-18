@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-@include('inc.quote', ['quote' => $quote])
 <div class="row justify-content-center mb-2">
     <div class="col-md-12">
         <div class="card">

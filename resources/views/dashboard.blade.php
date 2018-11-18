@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row justify-content-center mb-2">
+<div class="row justify-content-center mb-4">
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">Create Task</div>

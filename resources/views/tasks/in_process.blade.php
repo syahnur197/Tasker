@@ -1,4 +1,4 @@
-<div class="col-md-4">
+<div class="col-md-4 mb-4">
 	<div class="card">
 		<div class="card-header bg-info text-white">In Process</div>
 		<div class="card-body">

@@ -4,7 +4,7 @@
 		@method('PATCH')
 	@endif
 	<div class="row">
-		<div class="col-10 col-lg-10 col-md-10">
+		<div class="col-8 col-lg-10 col-md-10">
 			<div class="form-group">
 				<label for="description">Description <span class="text-danger">*required</span></label>
 				<input type="description" 
@@ -16,7 +16,7 @@
 					value="{{ $form === "edit" && old('description', null) == null ? $task->description : old('description') }}">
 			</div>
 		</div>
-		<div class="col-2 col-lg-2 col-md-2" style="margin-top: 2.1em;">
+		<div class="col-4 col-lg-2 col-md-2" style="margin-top: 2.1em;">
 			<input class="btn btn-primary btn-block" type="submit" value="Submit">
 		</div>
 	</div>

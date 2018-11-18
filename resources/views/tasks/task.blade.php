@@ -39,10 +39,10 @@
 		</div>
 	</div>
 	@if ($task->start_date !== NULL && $task->completed_on == NULL)
-		<p class="mb-0">Start Date: {{ $task->start_date }}</p>
+		<p class="mb-0">Start Date: {{ Carbon\Carbon::parse($task->start_date)->format('d M Y') }}</p>
 	@endif
 	@if ($task->end_date !== NULL && $task->completed_on == NULL)
-		<p class="mb-0">End Date: {{ $task->end_date }}</p>
+		<p class="mb-0">End Date: {{ Carbon\Carbon::parse($task->end_date)->format('d M Y') }}</p>
 	@endif
 	@if ($task->completed_on !== NULL)
 		<p class="mb-0">Completed Date: {{ $task->completed_on }}</p>

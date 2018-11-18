@@ -4,6 +4,8 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use App\User;
+use Illuminate\Support\Facades\Mail;
 
 class Kernel extends ConsoleKernel
 {
@@ -26,6 +28,16 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
+        $schedule->call(function() {
+            $users = User::all();
+            foreach ($users as $user) {
+                $data = (object)array(
+                    "pendingTasks" => $user->pendingTasks,
+                    "inProcessTasks" => $user->inProcessTasks
+                );
+                Mail::to($user->email)->send(new TodaysTasks($data));
+            }
+        })->dailyAt('8:30');
     }
 
     /**

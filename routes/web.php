@@ -24,3 +24,5 @@ Route::resource('/tasks', 'TasksController');
 Route::post('/tasks/{task}/start', 'TasksController@start');
 
 Route::post('/tasks/{task}/stop', 'TasksController@stop');
+
+// Route::get('/email_task', 'TasksController@email');

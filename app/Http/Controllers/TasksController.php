@@ -117,4 +117,16 @@ class TasksController extends Controller
         $task->stop();
         return redirect('/dashboard');
     }
+
+    public function email()
+    {
+        $user = User::find(1);
+        $data = (object)array(
+            "pendingTasks" => $user->pendingTasks,
+            "inProcessTasks" => $user->inProcessTasks
+        );
+        // Mail::to('syahnurnizam197@gmail.com')->send(new TodaysTasks($data));
+        return new TodaysTasks($data);
+        // return $data;
+    }
 }

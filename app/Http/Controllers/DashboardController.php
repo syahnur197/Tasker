@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use guzzlehttp\guzzle;
+use Spatie\Permission\Models\Permission;
 
 class DashboardController extends Controller
 {

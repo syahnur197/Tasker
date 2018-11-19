@@ -38,6 +38,8 @@ class Kernel extends ConsoleKernel
                 Mail::to($user->email)->send(new TodaysTasks($data));
             }
         })->dailyAt('8:30');
+
+        $schedule->exec('php73 artisan telescope:prune')->daily();
     }
 
     /**

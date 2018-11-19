@@ -6,3 +6,9 @@ $body-bg: #f5f8fa;
 $font-family-sans-serif: "Raleway", sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
+
+$container-max-widths: (
+  md: 80%,
+  lg: 80%,
+  xl: 80%
+) !default;

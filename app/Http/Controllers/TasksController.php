@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Task;
 use Illuminate\Http\Request;
+use App\User;
 
 class TasksController extends Controller
 {
@@ -47,8 +48,13 @@ class TasksController extends Controller
             'start_date' => 'nullable|date',
             'end_date' => 'nullable|date'
         ]);
+        $user = auth()->user();
 
-        auth()->user()->addTask($task);
+        if ($request->filled('owner_id')) {
+            $user = User::find($request->owner_id);
+        }
+
+        $user->addTask($task);
         return redirect('/dashboard');
     }
 

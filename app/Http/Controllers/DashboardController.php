@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use guzzlehttp\guzzle;
+use Spatie\Permission\Models\Permission;
+use App\User;
 
 class DashboardController extends Controller
 {
@@ -24,6 +25,10 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        $data['users'] = NULL;
+        if(auth()->user()->can('update tasks')) {
+            $data['users'] = User::all();
+        }
         $data['pending_tasks'] = auth()->user()->pendingTasks;
         $data['in_process_tasks'] = auth()->user()->inProcessTasks;
         $data['completed_today_tasks'] = auth()->user()->completedTodayTasks;

@@ -4,16 +4,12 @@
 <div class="row justify-content-center mb-4">
     <div class="col-md-12">
         <div class="card">
-            <div class="card-header">Create Task</div>
+            <div class="card-header bg-primary text-white">Create Task</div>
             <div class="card-body">
-                @include('tasks.form', ['form' => 'create', 'task' => ''])
+                @include('tasks.form', ['form' => 'create', 'task' => '', 'users' => $users])
             </div>
         </div>
     </div>
 </div>
-<div class="row justify-content-center">
-    @include('tasks.pending', ["pending_tasks" => $pending_tasks])
-    @include('tasks.in_process', ["in_process_tasks" => $in_process_tasks])
-    @include('tasks.completed_today')
-</div>
+@include('tasks.my_task', ["pending_tasks" => $pending_tasks, "in_process_tasks" => $in_process_tasks])
 @endsection

@@ -12,10 +12,14 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::all();
-        return $users;
+        $data['users'] = User::all();
+        $data['user'] = $user = $request->filled('owner_id') ? User::find($request->owner_id) : NULL;
+        $data['pending_tasks'] = $request->filled('owner_id') ? $user->pendingTasks : collect();
+        $data['in_process_tasks'] = $request->filled('owner_id') ? $user->inProcessTasks : collect();
+        $data['completed_today_tasks'] = $request->filled('owner_id') ? $user->completedTodayTasks : collect();        
+        return view('tasks.all_users', $data);
     }
 
     /**

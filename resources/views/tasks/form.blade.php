@@ -41,4 +41,7 @@
 			</div>
 		</div>
 	</div>
+	@can('update tasks')
+		@include('tasks.assign', ['users' => $users])
+	@endcan
 </form>

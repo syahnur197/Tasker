@@ -53,9 +53,9 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="/tasks">{{ __('Completed Tasks') }}</a>
-                                    @role('Super Admin')
+                                    @hasrole('Super Admin')
                                         <a class="dropdown-item" href="/users">{{ __('All Users') }}</a>
-                                    @endrole
+                                    @endhasrole
                                     <a class="dropdown-item text-danger" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

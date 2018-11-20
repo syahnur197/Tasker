@@ -49,10 +49,6 @@
         ],
         "post-install-cmd": [
             "chmod -R 777 public/"
-        ],
-        "post-autoload-dump": [
-            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover"
         ]
     },
     "config": {

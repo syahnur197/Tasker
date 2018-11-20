@@ -16,6 +16,7 @@ Please refer to your tasks today
 @endforeach
 @endif
 
+Please log in to [Tasker](https://tasker.nextacloud.com) <br>
 Thanks,<br>
 {{ config('mail.from.name') }}
 @endcomponent

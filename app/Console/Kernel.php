@@ -6,6 +6,7 @@ use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use App\User;
 use Illuminate\Support\Facades\Mail;
+use App\Mail\TodaysTasks;
 
 class Kernel extends ConsoleKernel
 {
@@ -28,16 +29,9 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
-        $schedule->call(function() {
-            $users = User::all();
-            foreach ($users as $user) {
-                $data = (object)array(
-                    "pendingTasks" => $user->pendingTasks,
-                    "inProcessTasks" => $user->inProcessTasks
-                );
-                Mail::to($user->email)->send(new TodaysTasks($data));
-            }
-        })->dailyAt('8:30');
+        $schedule->command('tasks:email')
+        ->timezone('Asia/Brunei')
+        ->dailyAt('8:30');
 
         $schedule->exec('php73 artisan telescope:prune')->daily();
     }

@@ -14,7 +14,7 @@ class EmailTodaysTasks extends Command
      *
      * @var string
      */
-    protected $signature = 'tasks:email';
+    protected $signature = 'email:tasks';
 
     /**
      * The console command description.
@@ -40,19 +40,21 @@ class EmailTodaysTasks extends Command
      */
     public function handle()
     {
-        // $users = User::all();
-        // foreach ($users as $user) {
-        //     $data = (object)array(
-        //         "pendingTasks" => $user->pendingTasks,
-        //         "inProcessTasks" => $user->inProcessTasks
-        //     );
-        //     Mail::to($user->email)->send(new TodaysTasks($data));
-        // }
-        $user = User::find(1);
-        $data = (object)array(
-            "pendingTasks" => $user->pendingTasks,
-            "inProcessTasks" => $user->inProcessTasks
-        );
-        Mail::to($user->email)->send(new TodaysTasks($data));
+        $users = User::all();
+        foreach ($users as $user) {
+            $data = (object)array(
+                "pendingTasks" => $user->pendingTasks,
+                "inProcessTasks" => $user->inProcessTasks,
+                "dueTodayTasks" => $user->dueTodayTasks 
+            );
+            Mail::to($user->email)->send(new TodaysTasks($data));
+        }
+        // $user = User::find(1);
+        // $data = (object)array(
+        //     "pendingTasks" => $user->pendingTasks,
+        //     "inProcessTasks" => $user->inProcessTasks,
+        //     "dueTodayTasks" => $user->dueTodayTasks
+        // );
+        // Mail::to($user->email)->send(new TodaysTasks($data));
     }
 }

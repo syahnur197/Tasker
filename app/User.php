@@ -59,5 +59,11 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Task', 'owner_id')->where('status', 3)->latest('completed_on');
     }
+    
+    public function dueTodayTasks()
+    {
+        return $this->hasMany('App\Task', 'owner_id')->where('end_date', date('Y-m-d'));
+
+    }
 
 }

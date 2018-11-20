@@ -16,6 +16,13 @@ Please refer to your tasks today
 @endforeach
 @endif
 
+@if ($dueTodayTasks->isNotEmpty())
+## Due Today Tasks
+@foreach ($dueTodayTasks as $task)
+* {{$task->description}}
+@endforeach
+@endif
+
 Please log in to [Tasker](https://tasker.nextacloud.com) <br>
 Thanks,<br>
 {{ config('mail.from.name') }}

@@ -12,6 +12,7 @@ class TodaysTasks extends Mailable
     use Queueable, SerializesModels;
     private $pendingTasks;
     private $inProcessTasks;
+    private $dueTodayTasks;
 
     /**
      * Create a new message instance.
@@ -22,6 +23,7 @@ class TodaysTasks extends Mailable
     {
         $this->pendingTasks = $data->pendingTasks;
         $this->inProcessTasks = $data->inProcessTasks;
+        $this->dueTodayTasks = $data->dueTodayTasks;
     }
 
     /**
@@ -35,7 +37,8 @@ class TodaysTasks extends Mailable
             ->from(config('mail.from.address'))
             ->markdown('emails.todaysTasks', [
                 'pendingTasks' => $this->pendingTasks,
-                'inProcessTasks' => $this->inProcessTasks
+                'inProcessTasks' => $this->inProcessTasks,
+                'dueTodayTasks' => $this->dueTodayTasks
             ]);
     }
 }
